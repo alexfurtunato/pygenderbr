@@ -5,7 +5,7 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(name='pygenderbr',
-      version='0.1.0',
+      version='0.2.0',
       description='Python tool to interface with "Nomes" IBGE API v.2',
       url='https://github.com/alexfurtunatoifrn/pygenderbr',
       author='Alex Furtunato',

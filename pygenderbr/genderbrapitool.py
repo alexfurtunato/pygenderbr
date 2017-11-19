@@ -28,7 +28,6 @@ class Gender:
 
         self.urlsts = 'http://servicodados.ibge.gov.br/api/v1/localidades/estados'
         self.urlnames = 'http://servicodados.ibge.gov.br/api/v2/censos/nomes/'
-        self.sts = self.__getsts()
         return
 
     def getgender(self, name, threshold=0.9):
@@ -77,6 +76,7 @@ class Gender:
         """
 
         if locale:
+            self.sts = self.__getsts()
             if not self.sts.empty:
                 if not locale in self.sts['sigla'].tolist():
                     print("ERROR: State abbreviation not valid! Discarding "
@@ -131,6 +131,7 @@ class Gender:
                       "Discarding gender option.")
                 gender = None
         if locale:
+            self.sts = self.__getsts()
             if not self.sts.empty:
                 if locale in self.sts['sigla'].tolist():
                     st_id = self.sts[self.sts['sigla']==locale]['id'].item()
@@ -204,6 +205,7 @@ class Gender:
                       "Discarding decade option.")
                 decade = None
         if locale:
+            self.sts = self.__getsts()
             if not self.sts.empty:
                 if locale in self.sts['sigla'].tolist():
                     st_id = self.sts[self.sts['sigla']==locale]['id'].item()
