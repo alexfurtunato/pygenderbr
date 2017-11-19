@@ -62,8 +62,9 @@ class Gender:
         pgenderm = gender['M'] / (gender['M'] + gender['F'])
         pgenderf = gender['F'] / (gender['M'] + gender['F'])
         pgender = pd.DataFrame([pgenderf, pgenderm], index=['F', 'M']).transpose()
-        isgenderf = pgender['F'] > threshold
-        pgender['gender'] = isgenderf.map(lambda x: 'F' if x else 'M')
+        isgenderf = pgender['F'] >= threshold
+        isgenderm = pgender['M'] >= threshold
+        pgender['gender'] = isgenderf.map(lambda x: 'F' if x else isgenderm.map(lambda y: 'M' if y else ''))
         return pgender['gender']
 
     def getgenderoccurrence(self, name, locale=None):
