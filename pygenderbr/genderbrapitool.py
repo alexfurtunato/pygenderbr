@@ -59,12 +59,11 @@ class Gender:
             print("ERROR: Name parameter should be a string or list of string.")
             return None
         gender = self.getgenderoccurrence(name)
-        pgenderm = gender['M'] / (gender['M'] + gender['F'])
-        pgenderf = gender['F'] / (gender['M'] + gender['F'])
+        pgenderm = (gender['M'] / (gender['M'] + gender['F'])).fillna(0)
+        pgenderf = (gender['F'] / (gender['M'] + gender['F'])).fillna(0)
         pgender = pd.DataFrame([pgenderf, pgenderm], index=['F', 'M']).transpose()
-        isgenderf = pgender['F'] >= threshold
-        isgenderm = pgender['M'] >= threshold
-        pgender['gender'] = isgenderf.map(lambda x: 'F' if x else isgenderm.map(lambda y: 'M' if y else ''))
+        pgender['gender'] = pgender.apply(lambda x: 'F' if x[0] > threshold
+                            else ('M' if x[1] > threshold else ''), axis=1)
         return pgender['gender']
 
     def getgenderoccurrence(self, name, locale=None):
@@ -148,6 +147,7 @@ class Gender:
                     locale = None
         if type(name) == str:
             url = self.urlnames + name
+            lnames = [name]
         elif type(name) == list:
             for n in name:
                 if not type(n) == str:
@@ -155,6 +155,7 @@ class Gender:
                           "string or list of string.")
                     return None
             url = self.urlnames + '|'.join(name)
+            lnames = name
         else:
             print("ERROR: Name parameter should be a string or list of string.")
             return None
@@ -165,15 +166,21 @@ class Gender:
             urlpar = ''
         names = self.__getresponse(url+urlpar)
         if names[0] == 200:
-            names_dict = []
-            values_dict = []
+            names_g = []
+            values_g = []
+            lvalues = []
             for iname in names[1]:
-                names_dict.append(iname['nome'])
+                names_g.append(iname['nome'])
                 total = 0
                 for occur in iname['res']:
                     total += occur['frequencia']
-                values_dict.append(total)
-            names_df = pd.DataFrame({'name':names_dict,'occurrence':values_dict})
+                values_g.append(total)
+            for i in lnames:
+                if i.upper() in names_g:
+                    lvalues.append(values_g[names_g.index(i.upper())])
+                else:
+                    lvalues.append(0)
+            names_df = pd.DataFrame({'name':lnames,'occurrence':lvalues})
             return names_df
         else:
             return None

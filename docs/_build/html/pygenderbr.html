@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pygenderbr package &#8212; pygenderbr 0.1.0 documentation</title>
+    <title>pygenderbr package &#8212; pygenderbr 0.5.0 documentation</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.1.0',
+        VERSION:     '0.5.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -58,8 +58,8 @@
 <div><dl class="docutils">
 <dt>Methods</dt>
 <dd>getgender()
-getgenderocurrence()
-getocurrence()
+getgenderoccurrence()
+getoccurrence()
 getranking()</dd>
 </dl>
 </div></blockquote>
@@ -67,15 +67,15 @@ getranking()</dd>
 <dt id="pygenderbr.genderbrapitool.Gender.getgender">
 <code class="descname">getgender</code><span class="sig-paren">(</span><em>name</em>, <em>threshold=0.9</em><span class="sig-paren">)</span><a class="headerlink" href="#pygenderbr.genderbrapitool.Gender.getgender" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the name(s) gender from the IBGE census database, based on a threshold
-value that represent the minimim limit of percent ocurrence of name(s)
+value that represent the minimim limit of percent occurrence of name(s)
 to it be on a specific gender.
-Returns a dataframe resume with name(s) gender (&#8216;F&#8217; or &#8216;M&#8217;).</p>
+Returns a dataframe resume with name(s) gender (&#8216;F&#8217;, &#8216;M&#8217; or &#8216;&#8217; on indefined case).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>name</strong> &#8211; string ou string list with name(s) to get ocurrence.</li>
+<li><strong>name</strong> &#8211; string ou string list(max 10 elements) with name(s) to get occurrence.</li>
 <li><strong>threshold</strong> &#8211; minimum percent value that represent a limit of gender.</li>
 </ul>
 </td>
@@ -88,21 +88,21 @@ Returns a dataframe resume with name(s) gender (&#8216;F&#8217; or &#8216;M&#821
 </dd></dl>
 
 <dl class="method">
-<dt id="pygenderbr.genderbrapitool.Gender.getgenderocurrence">
-<code class="descname">getgenderocurrence</code><span class="sig-paren">(</span><em>name</em>, <em>locale=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pygenderbr.genderbrapitool.Gender.getgenderocurrence" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the name(s) ocurrence(s) from the IBGE census database.
+<dt id="pygenderbr.genderbrapitool.Gender.getgenderoccurrence">
+<code class="descname">getgenderoccurrence</code><span class="sig-paren">(</span><em>name</em>, <em>locale=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pygenderbr.genderbrapitool.Gender.getgenderoccurrence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the name(s) occurrence(s) from the IBGE census database.
 Returns a dataframe resume with number of times that name(s) occurs per gender.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>name</strong> &#8211; string ou string list with name(s) to get ocurrence.</li>
-<li><strong>locale</strong> &#8211; specify locale (state abrev) to get the name(s) ocurrence(s).</li>
+<li><strong>name</strong> &#8211; string ou string list(max 10 elements) with name(s) to get occurrence.</li>
+<li><strong>locale</strong> &#8211; specify locale (state abrev) to get the name(s) occurrence(s).</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dataframe with name(s) occurence(s) per gender</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dataframe with name(s) occurrence(s) per gender</p>
 </td>
 </tr>
 </tbody>
@@ -110,22 +110,22 @@ Returns a dataframe resume with number of times that name(s) occurs per gender.<
 </dd></dl>
 
 <dl class="method">
-<dt id="pygenderbr.genderbrapitool.Gender.getocurrence">
-<code class="descname">getocurrence</code><span class="sig-paren">(</span><em>name</em>, <em>gender=None</em>, <em>locale=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pygenderbr.genderbrapitool.Gender.getocurrence" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the name(s) ocurrence(s) from the IBGE census database.
+<dt id="pygenderbr.genderbrapitool.Gender.getoccurrence">
+<code class="descname">getoccurrence</code><span class="sig-paren">(</span><em>name</em>, <em>gender=None</em>, <em>locale=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pygenderbr.genderbrapitool.Gender.getoccurrence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the name(s) occurrence(s) from the IBGE census database.
 Returns a dataframe with number of times that name(s) occurs.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>name</strong> &#8211; string ou string list with name(s) to get ocurrence.</li>
-<li><strong>gender</strong> &#8211; specify gender to get the name(s) ocurrence(s).</li>
-<li><strong>locale</strong> &#8211; specify locale (state abrev) to get the name(s) ocurrence(s).</li>
+<li><strong>name</strong> &#8211; string ou string list(max 10 elements) with name(s) to get occurrence.</li>
+<li><strong>gender</strong> &#8211; specify gender to get the name(s) occurrence(s).</li>
+<li><strong>locale</strong> &#8211; specify locale (state abrev) to get the name(s) occurrence(s).</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dataframe with name(s) occurence(s)</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dataframe with name(s) occurrence(s)</p>
 </td>
 </tr>
 </tbody>
