@@ -38,7 +38,7 @@ class Gender:
         to it be on a specific gender.
         Returns a dataframe resume with name(s) gender ('F' or 'M').
 
-        :param name: string ou string list with name(s) to get occurrence.
+        :param name: string ou string list(max 10 elements) with name(s) to get occurrence.
         :param threshold: minimum percent value that represent a limit of gender.
         :return: dataframe with name(s) gender ('F' or 'M')
         """
@@ -71,7 +71,7 @@ class Gender:
         Get the name(s) occurrence(s) from the IBGE census database.
         Returns a dataframe resume with number of times that name(s) occurs per gender.
 
-        :param name: string ou string list with name(s) to get occurrence.
+        :param name: string ou string list(max 10 elements) with name(s) to get occurrence.
         :param locale: specify locale (state abrev) to get the name(s) occurrence(s).
         :return: dataframe with name(s) occurrence(s) per gender
         """
@@ -117,7 +117,7 @@ class Gender:
         Get the name(s) occurrence(s) from the IBGE census database.
         Returns a dataframe with number of times that name(s) occurs.
 
-        :param name: string ou string list with name(s) to get occurrence.
+        :param name: string ou string list(max 10 elements) with name(s) to get occurrence.
         :param gender: specify gender to get the name(s) occurrence(s).
         :param locale: specify locale (state abrev) to get the name(s) occurrence(s).
         :return: dataframe with name(s) occurrence(s)
