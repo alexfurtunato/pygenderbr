@@ -28,6 +28,7 @@ class Gender:
 
         self.urlsts = 'http://servicodados.ibge.gov.br/api/v1/localidades/estados'
         self.urlnames = 'http://servicodados.ibge.gov.br/api/v2/censos/nomes/'
+        self.sts = []
         return
 
     def getgender(self, name, threshold=0.9):
