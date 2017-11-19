@@ -5,7 +5,8 @@ The IBGE API is based on 2010 Census.
 
 ## Features
 
- - Query by name(s) gender(s) based on 2010 IBGE Census from Brazil
+ - Query by name(s) gender(s) based on 2010 IBGE Census from Brazil. Gender return
+ are 'F' or 'M'. Indefined gender is ''.
  - Query by name(s) ocurrence(s) by gender on Brazil or specific state
  - Query by name(s) occurrence(s) on specific gender or on all
  - Query by names ranking occurrence on Brazil (20's most)

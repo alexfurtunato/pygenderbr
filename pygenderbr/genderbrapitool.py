@@ -36,7 +36,7 @@ class Gender:
         Get the name(s) gender from the IBGE census database, based on a threshold
         value that represent the minimim limit of percent occurrence of name(s)
         to it be on a specific gender.
-        Returns a dataframe resume with name(s) gender ('F' or 'M').
+        Returns a dataframe resume with name(s) gender ('F', 'M' or '' on indefined case).
 
         :param name: string ou string list(max 10 elements) with name(s) to get occurrence.
         :param threshold: minimum percent value that represent a limit of gender.
